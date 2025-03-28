@@ -1,1 +1,1 @@
-worker: python web2json2db.py
+worker: python python_parser.py
