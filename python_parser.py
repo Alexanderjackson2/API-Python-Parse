@@ -7,7 +7,11 @@ DATABASE_URL = "postgresql://user:pass@host/dbname"
 TABLE_NAME = "hero_stats"
 
 def get_data():
-    response = requests.get("https://mrapi.org/api/heroes-stats/pc")
+    headers = {
+        "User-Agent": "Mozilla/5.0 (compatible; MyAppName/1.0; +https://yourdomain.example.com)",
+        "Accept": "application/json"
+    }
+    response = requests.get("https://mrapi.org/api/heroes-stats/pc", headers=headers)
     if response.status_code != 200:
         raise Exception("API error: " + str(response.status_code))
     data = response.json()
